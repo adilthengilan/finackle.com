@@ -1,0 +1,6 @@
+{
+  "name": "Finackle Landing Page",
+  "description": "A high-fidelity animated clone of the Finackle landing page.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
