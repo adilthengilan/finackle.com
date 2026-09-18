@@ -1,6 +1,6 @@
 {
-  "name": "Finackle Landing Page",
-  "description": "A high-fidelity animated clone of the Finackle landing page.",
+  "name": "Finackle — Strategic Finance & Business Insights Partner",
+  "description": "Finackle provides outsourced accounting, financial reporting, and CFO advisory services that help business owners understand business performance, improve cash flow visibility, and make confident financial decisions.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

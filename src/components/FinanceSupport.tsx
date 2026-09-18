@@ -32,7 +32,7 @@ export const FinanceSupport = () => {
 
          <ScrollReveal delay={0.2}>
            <div className="bg-white rounded-[2rem] p-10 shadow-xl shadow-gray-200/40 border border-gray-100 h-full flex flex-col hover:border-indigo-200 transition-colors group">
-              <div className="w-14 h-14 rounded-2xl bg-indigo-50/50 text-indigo-400 flex items-center justify-center mb-8 group-hover:bg-indigo-50/500 group-hover:text-white transition-colors">
+              <div className="w-14 h-14 rounded-2xl bg-indigo-50/50 text-indigo-400 flex items-center justify-center mb-8 group-hover:bg-[#1C0F38] group-hover:text-white transition-colors">
                 <Map className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">A Clearer Next Move</h3>

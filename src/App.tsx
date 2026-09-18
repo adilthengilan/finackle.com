@@ -1,25 +1,60 @@
-import { Header } from "./components/Header";
-import { Hero } from "./components/Hero";
-import { FinanceSupport } from "./components/FinanceSupport";
-import { Services } from "./components/Services";
-import { Reporting } from "./components/Reporting";
-import { Process } from "./components/Process";
-import { Insights } from "./components/Insights";
-import { Footer } from "./components/Footer";
+import { Header } from './components/Header';
+import { Hero } from './components/Hero';
+import { TheChallenge } from './components/TheChallenge';
+import { CreateValue } from './components/CreateValue';
+import { Industries } from './components/Industries';
+import { ConnectedFinanceFunction } from './components/ConnectedFinanceFunction';
+import { MonthlyReporting } from './components/MonthlyReporting';
+import { WhyFinackle } from './components/WhyFinackle';
+import { WhoWeHelp } from './components/WhoWeHelp';
+import { OurApproach } from './components/OurApproach';
+import { About } from './components/About';
+import { HealthCheckCTA } from './components/HealthCheckCTA';
+import { Footer } from './components/Footer';
 
-export default function App() {
+export function App() {
   return (
-    <div className="min-h-screen bg-[#F6F7FA] font-sans selection:bg-indigo-200 selection:text-indigo-900 overflow-x-hidden text-gray-900">
+    <div className="min-h-screen bg-[#F6F8FC] text-[#111827] font-sans antialiased selection:bg-[#142360] selection:text-white">
+      {/* 01. Navigation */}
       <Header />
-      <main>
-        <Hero />
-        <FinanceSupport />
-        <Services />
-        <Reporting />
-        <Process />
-        <Insights />
-      </main>
+
+      {/* 02. Hero ("Turning Financial Data into Better Business Decisions") */}
+      <Hero />
+
+      {/* 03. The Challenge (Business problems Finackle solves) */}
+      <TheChallenge />
+
+      {/* 04. How We Create Value */}
+      <CreateValue />
+
+      {/* 05. Industries (E-commerce, Restaurants & F&B, Trading & Distribution, Professional Services) */}
+      <Industries />
+
+      {/* 06. One Connected Finance Function */}
+      <ConnectedFinanceFunction />
+
+      {/* 07 & 08. Monthly Reporting (Financial Dashboard) & Questions We Help Answer */}
+      <MonthlyReporting />
+
+      {/* 09. Why Finackle (Trust Section) */}
+      <WhyFinackle />
+
+      {/* 10. Who We Help (Growing-Business Situations) */}
+      <WhoWeHelp />
+
+      {/* 11. Our Approach (Three Pillars) */}
+      <OurApproach />
+
+      {/* 12. About Finackle (Company Story & Positioning) */}
+      <About />
+
+      {/* 13 & 14. Final CTA & Contact Form (Finance Health Check) */}
+      <HealthCheckCTA />
+
+      {/* 15. Footer */}
       <Footer />
     </div>
   );
 }
+
+export default App;

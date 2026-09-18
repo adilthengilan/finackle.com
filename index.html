@@ -3,12 +3,38 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Finackle Landing Page</title>
-    <meta name="description" content="A high-fidelity animated clone of the Finackle landing page." />
-    <meta property="og:title" content="Finackle Landing Page" />
-    <meta property="og:description" content="A high-fidelity animated clone of the Finackle landing page." />
+    <title>Finackle — Strategic Finance & Business Insights Partner</title>
+    <meta name="description" content="Finackle provides outsourced accounting, financial reporting, and CFO advisory services that help business owners understand business performance, improve cash flow visibility, and make confident financial decisions." />
+    <meta property="og:title" content="Finackle — Strategic Finance & Business Insights Partner" />
+    <meta property="og:description" content="Finackle provides outsourced accounting, financial reporting, and CFO advisory services that help business owners understand business performance, improve cash flow visibility, and make confident financial decisions." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (function () {
+        try {
+          var originalFetch = typeof window !== 'undefined' ? window.fetch : undefined;
+          var _fetch = typeof originalFetch === 'function' ? originalFetch.bind(window) : originalFetch;
+          var desc = {
+            get: function () {
+              return _fetch;
+            },
+            set: function (fn) {
+              _fetch = fn;
+            },
+            configurable: true,
+            enumerable: true
+          };
+          try {
+            Object.defineProperty(window, 'fetch', desc);
+          } catch (_) {}
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            try {
+              Object.defineProperty(Window.prototype, 'fetch', desc);
+            } catch (_) {}
+          }
+        } catch (_) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

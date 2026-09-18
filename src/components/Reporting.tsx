@@ -87,7 +87,7 @@ export const Reporting = () => {
                     <h4 className="text-sm font-bold text-gray-900 mb-6 flex items-center gap-2"><TrendingUp className="w-4 h-4 text-[#1C0F38]" /> Revenue Trend</h4>
                     <div className="relative h-24 flex items-end justify-between px-2">
                        {/* Mock Sparkline */}
-                       <svg className="absolute inset-0 w-full h-full text-indigo-100 fill-blue-50/50 stroke-[#1C0F38]" preserveAspectRatio="none" viewBox="0 0 100 50">
+                       <svg className="absolute inset-0 w-full h-full text-indigo-100 fill-indigo-50/50 stroke-[#1C0F38]" preserveAspectRatio="none" viewBox="0 0 100 50">
                          <path d="M0,45 L15,40 L35,35 L55,25 L75,15 L100,5 L100,50 L0,50 Z" strokeWidth="2" strokeLinejoin="round" />
                        </svg>
                        <div className="text-[9px] font-bold text-gray-400 relative z-10 pb-1">Feb</div>
