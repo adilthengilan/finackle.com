@@ -6,9 +6,13 @@ export const Footer = () => {
         {/* Footer Top Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16 border-b border-white/10 pb-16">
           <div className="md:col-span-5">
-            <h3 className="font-black text-2xl tracking-tight text-white mb-3">
-              FINACKLE<span className="text-blue-300">.</span>
-            </h3>
+                  <a href="#" className="flex items-center group pl-1">
+  <img
+    src="/finackle-logo.png"
+    alt="Finackle"
+    className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
+  />
+</a>
             <p className="text-[#EEF2FB] font-bold text-sm mb-2">
               Strategic Finance &amp; Business Insights Partner
             </p>

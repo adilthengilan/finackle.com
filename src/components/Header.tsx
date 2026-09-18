@@ -10,11 +10,13 @@ export const Header = () => {
       <div className="pointer-events-auto w-full max-w-6xl bg-white/85 backdrop-blur-2xl border border-white/90 shadow-[0_10px_35px_rgba(19,33,93,0.08)] rounded-full px-5 sm:px-7 py-2.5 sm:py-3 flex justify-between items-center transition-all duration-300 ring-1 ring-[#13215D]/5">
         
         {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-2 group pl-1">
-          <span className="font-black text-xl sm:text-2xl tracking-tight text-[#13215D] group-hover:text-[#142360] transition-colors">
-            FINACKLE<span className="text-[#1acbc9]">.</span>
-          </span>
-        </a>
+       <a href="#" className="flex items-center group pl-1">
+  <img
+    src="/finackle-logo.png"
+    alt="Finackle"
+    className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
+  />
+</a>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-1 xl:gap-2 text-[13px] font-semibold text-[#13215D]/80">
