@@ -93,12 +93,18 @@ export const WhyFinackle = () => {
                 <h3 className="text-xl font-bold mb-3">
                   A True Finance Partner, Not a Transactional Vendor
                 </h3>
-                <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-normal">
-                  We embed within your cadence, translate raw entries into actionable roadmaps, and support your leadership through every phase of scale.
+                <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-normal mb-6">
+                  We work alongside your business with a structured monthly reporting and review process that keeps you informed and in control.
                 </p>
+                <a
+                  href="#health-check-form"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-white bg-white/15 hover:bg-white/25 border border-white/20 px-5 py-2.5 rounded-full transition-all w-fit"
+                >
+                  Talk to Our Team
+                </a>
               </div>
               <div className="pt-6 border-t border-white/15 mt-6 text-xs text-slate-300 font-medium">
-                Headquartered in the UAE · Dedicated team support
+                Headquartered in the UAE · Dedicated ongoing finance support
               </div>
             </div>
           </ScrollReveal>

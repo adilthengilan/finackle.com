@@ -29,8 +29,8 @@ export const HealthCheckCTA = () => {
         <ScrollReveal>
           <div className="bg-gradient-to-r from-[#142360] to-[#13215D] rounded-[3rem] p-8 md:p-16 border border-white/20 shadow-2xl mb-20 text-center max-w-5xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 text-white text-xs font-bold uppercase tracking-wider mb-6 border border-white/20 backdrop-blur-sm">
-              <Clock className="w-3.5 h-3.5" />
-              30-Minute Finance Discussion
+              <ShieldCheck className="w-3.5 h-3.5 text-[#14CBC9]" />
+              Structured Finance Review
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white leading-tight mb-6 tracking-tight">
@@ -38,7 +38,7 @@ export const HealthCheckCTA = () => {
             </h2>
 
             <p className="text-slate-100 text-base md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 font-normal">
-              A 30-minute discussion to understand your current finance setup, reporting challenges, and opportunities to improve visibility.
+              A structured review of your reporting, cash flow visibility, and finance processes to identify opportunities for better decision-making.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -119,7 +119,7 @@ export const HealthCheckCTA = () => {
                         Finance Health Check Requested
                       </h4>
                       <p className="text-[#667085] text-sm max-w-md mx-auto mb-8 leading-relaxed">
-                        Thank you, {formData.fullName}. A member of our strategic finance advisory team will contact you shortly to confirm a convenient 30-minute time slot.
+                        Thank you, {formData.fullName}. A member of our strategic finance advisory team will contact you shortly to confirm a convenient time to connect.
                       </p>
                       <button 
                         onClick={() => {

@@ -38,7 +38,7 @@ export const OurApproach = () => {
               Our Approach
             </div>
             <h2 className="text-3xl md:text-5xl font-bold text-[#13215D] leading-tight mb-5 tracking-tight">
-              A Disciplined Cadence Built for Long-Term Clarity
+              A Structured Approach to Better Financial Visibility
             </h2>
             <p className="text-base md:text-lg text-[#667085] leading-relaxed font-normal">
               How we structure our collaboration so your finance operations stay resilient while your leadership gains clear visibility.

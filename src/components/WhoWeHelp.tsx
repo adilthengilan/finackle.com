@@ -12,7 +12,7 @@ const situations = [
   },
   {
     title: "Need reliable monthly reporting",
-    description: "You require structured management reports and reconciliations delivered consistently on a predictable monthly cadence."
+    description: "You need structured management reports and reconciliations delivered consistently, giving you reliable visibility into your business performance every month."
   },
   {
     title: "Want finance expertise without hiring a full finance team",
@@ -76,7 +76,7 @@ export const WhoWeHelp = () => {
                   Recognize your business in these situations?
                 </h3>
                 <p className="text-xs md:text-sm text-slate-200 leading-relaxed font-normal">
-                  Schedule a 30-minute Finance Health Check to review your reporting setup and uncover immediate visibility gains.
+                  Schedule a Finance Health Check to understand your current finance setup and identify opportunities to improve reporting, cash flow visibility, and decision-making.
                 </p>
               </div>
               <a 

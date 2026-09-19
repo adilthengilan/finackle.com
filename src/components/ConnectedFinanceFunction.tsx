@@ -119,7 +119,7 @@ export const ConnectedFinanceFunction = () => {
                 Want to evaluate where your finance function stands today?
               </h4>
               <p className="text-xs md:text-sm text-slate-300 font-normal">
-                Book a comprehensive 30-minute review of your reporting, processes, and visibility gaps.
+                Book a Finance Health Check to review your reporting, finance processes, and opportunities to improve visibility and decision-making.
               </p>
             </div>
             <a 

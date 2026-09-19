@@ -1,3 +1,5 @@
+import { Linkedin } from 'lucide-react';
+
 export const Footer = () => {
   return (
     <footer className="bg-gradient-to-b from-[#F8FAFC] to-white text-[#13215D] pt-20 pb-12 border-t border-[#E5EAF2] relative overflow-hidden">
@@ -16,9 +18,20 @@ export const Footer = () => {
             <p className="text-[#13215D] font-bold text-sm mb-2">
               Strategic Finance &amp; Business Insights Partner
             </p>
-            <p className="text-[#667085] text-sm leading-relaxed max-w-sm font-normal">
+            <p className="text-[#667085] text-sm leading-relaxed max-w-sm font-normal mb-6">
               Helping businesses understand performance, improve cash flow visibility, and make confident financial decisions.
             </p>
+
+            {/* Official Finackle Company LinkedIn */}
+            <a 
+              href="https://www.linkedin.com/company/finackle/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs font-bold text-[#142360] bg-[#EEF2FB] hover:bg-[#142360] hover:text-white px-3.5 py-2 rounded-full border border-[#E5EAF2] transition-all shadow-2xs"
+            >
+              <Linkedin className="w-4 h-4" />
+              <span>Connect on LinkedIn</span>
+            </a>
           </div>
           
           <div className="md:col-span-3">

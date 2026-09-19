@@ -1,5 +1,6 @@
 import { ScrollReveal } from './ScrollReveal';
 import { HelpCircle, ArrowRight } from 'lucide-react';
+import { InteractiveDashboard } from './InteractiveDashboard';
 
 const questions = [
   {
@@ -40,10 +41,10 @@ export const MonthlyReporting = () => {
             <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EEF2FB] text-[#142360] text-xs font-bold uppercase tracking-wider mb-6 border border-[#E5EAF2]">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#142360]"></span>
-                Monthly Reporting
+                Monthly reporting
               </div>
               <h2 className="text-3xl md:text-5xl font-bold text-[#13215D] leading-tight mb-4 tracking-tight">
-                A Monthly Review,<br />Not Just a Data Dump
+                Monthly reporting
               </h2>
               <p className="text-lg md:text-xl font-bold text-[#142360] mb-3">
                 A Report That Explains Why the Numbers Matter.
@@ -57,10 +58,13 @@ export const MonthlyReporting = () => {
               href="#health-check-form" 
               className="bg-white border border-[#E5EAF2] text-[#142360] px-6 py-3.5 rounded-full font-bold hover:bg-[#EEF2FB] hover:border-[#142360]/40 transition-all shadow-sm text-sm"
             >
-              See How Monthly Reporting Could Work
+              Improve Your Financial Visibility
             </a>
           </div>
         </ScrollReveal>
+
+        {/* Finackle Interactive Management Dashboard with Monthly Report <-> Decision Support toggle */}
+        <InteractiveDashboard />
 
         {/* Section 08: Questions We Help Answer */}
         <div className="mt-4">
@@ -112,14 +116,14 @@ export const MonthlyReporting = () => {
                     Have a specific finance question you've been putting off?
                   </h3>
                   <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-normal">
-                    Let us review your setup in a 30-minute discussion and show you where visibility can begin.
+                    Tell us about your business, where the numbers feel unclear, and where you want better visibility.
                   </p>
                 </div>
                 <a 
                   href="#health-check-form" 
                   className="bg-white text-[#142360] text-xs font-bold px-5 py-3 rounded-full hover:bg-[#EEF2FB] transition-all flex items-center justify-center gap-2 mt-6"
                 >
-                  Book a Finance Health Check <ArrowRight className="w-3.5 h-3.5 text-[#142360]" />
+                  Schedule a Finance Discussion <ArrowRight className="w-3.5 h-3.5 text-[#142360]" />
                 </a>
               </div>
             </ScrollReveal>
