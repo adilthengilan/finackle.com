@@ -18,26 +18,17 @@ export const Hero = () => {
         <ScrollReveal>
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto pt-4">
             
-            {/* Frosted Glass Eyebrow Badge */}
-            <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/70 backdrop-blur-xl text-[#13215D] text-xs font-bold tracking-wider uppercase mb-8 border border-white/90 shadow-[0_4px_20px_rgba(26,203,201,0.2)] ring-1 ring-[#1acbc9]/30">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1acbc9] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#142360]"></span>
-              </span>
-              <span className="font-extrabold tracking-widest text-[#13215D]">Strategic Finance & Business Insights</span>
-            </div>
-            
-            {/* H1 in Deep Navy */}
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-[#13215D] leading-[1.1] mb-6 tracking-tight drop-shadow-sm">
-              Turning Financial Data into Better Business Decisions
+            {/* Main Headline in Deep Navy */}
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-[#13215D] leading-[1.08] mb-6 tracking-tight drop-shadow-sm max-w-4xl">
+              Financial Clarity. Better Control. Smarter Business Decisions.
             </h1>
             
-            {/* Supporting Text in Deep Navy */}
+            {/* Supporting Description */}
             <p className="text-[#13215D]/85 text-base md:text-xl leading-relaxed max-w-3xl mb-10 font-normal">
-              Finackle helps SMEs, e-commerce businesses, and F&B companies build reliable finance operations, understand business performance, improve cash flow visibility, and make confident decisions.
+              Finackle helps SMEs, e-commerce businesses, and F&B companies build stronger finance operations, gain clear visibility into business performance, and make confident business decisions.
             </p>
             
-            {/* Action Buttons with Glass and Deep Navy Accents */}
+            {/* Action Buttons with Primary and Secondary CTAs */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto mb-14">
               <a 
                 href="#health-check-form"
@@ -47,10 +38,10 @@ export const Hero = () => {
                 <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
               </a>
               <a 
-                href="#finance-function"
+                href="#health-check-form"
                 className="w-full sm:w-auto bg-white/75 border border-white/90 text-[#13215D] px-8 py-4 rounded-full font-bold hover:bg-white/95 hover:shadow-lg transition-all flex items-center justify-center gap-2 text-base backdrop-blur-xl shadow-sm"
               >
-                Explore Our Services
+                Discuss Your Finance Challenges
               </a>
             </div>
 
@@ -61,8 +52,8 @@ export const Hero = () => {
                 UAE Free Zones &amp; Mainland
               </div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-white/80 text-[11px] font-semibold text-[#13215D] shadow-sm">
-                <Clock className="w-3.5 h-3.5 text-[#13215D]" />
-                30-Min Confidential Strategy Call
+                <Sparkles className="w-3.5 h-3.5 text-[#13215D]" />
+                Structured Finance Review
               </div>
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-white/80 text-[11px] font-semibold text-[#13215D] shadow-sm">
                 <ShieldCheck className="w-3.5 h-3.5 text-[#13215D]" />
@@ -82,7 +73,7 @@ export const Hero = () => {
               <div className="w-12 h-12 rounded-2xl bg-white/80 border border-white/90 flex items-center justify-center text-[#13215D] mb-5 shadow-sm">
                 <TrendingUp className="w-6 h-6 text-[#13215D]" />
               </div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#1acbc9]/20 text-[#13215D] text-[10px] font-bold uppercase tracking-wider mb-2 border border-[#1acbc9]/30">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#14CBC9]/20 text-[#13215D] text-[10px] font-bold uppercase tracking-wider mb-2 border border-[#14CBC9]/30">
                 Visibility
               </div>
               <h3 className="text-lg font-bold text-[#13215D] mb-2 tracking-tight">
@@ -93,13 +84,13 @@ export const Hero = () => {
               </p>
             </div>
 
-            {/* Card 2: Executive Business Reporting */}
+            {/* Card 2: Executive Insights Dashboard */}
             <div className="relative group bg-white/55 hover:bg-white/75 backdrop-blur-xl rounded-3xl p-7 border border-white/80 shadow-[0_10px_35px_rgba(19,33,93,0.06)] hover:shadow-[0_16px_45px_rgba(19,33,93,0.12)] transition-all duration-300">
               <div className="w-12 h-12 rounded-2xl bg-white/80 border border-white/90 flex items-center justify-center text-[#13215D] mb-5 shadow-sm">
                 <BarChart3 className="w-6 h-6 text-[#13215D]" />
               </div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#1acbc9]/20 text-[#13215D] text-[10px] font-bold uppercase tracking-wider mb-2 border border-[#1acbc9]/30">
-                Monthly Cadence
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#14CBC9]/20 text-[#13215D] text-[10px] font-bold uppercase tracking-wider mb-2 border border-[#14CBC9]/30">
+                Monthly reporting
               </div>
               <h3 className="text-lg font-bold text-[#13215D] mb-2 tracking-tight">
                 Executive Insights Dashboard
