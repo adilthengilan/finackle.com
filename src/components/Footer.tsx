@@ -1,4 +1,4 @@
-import { Linkedin } from 'lucide-react';
+import { Linkedin, Instagram, Facebook } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -22,16 +22,41 @@ export const Footer = () => {
               Helping businesses understand performance, improve cash flow visibility, and make confident financial decisions.
             </p>
 
-            {/* Official Finackle Company LinkedIn */}
-            <a 
-              href="https://www.linkedin.com/company/finackle/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-bold text-[#142360] bg-[#EEF2FB] hover:bg-[#142360] hover:text-white px-3.5 py-2 rounded-full border border-[#E5EAF2] transition-all shadow-2xs"
-            >
-              <Linkedin className="w-4 h-4" />
-              <span>Connect on LinkedIn</span>
-            </a>
+            {/* Official Finackle Social Channels */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <a 
+                href="https://www.linkedin.com/company/finackle/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Finackle on LinkedIn"
+                className="inline-flex items-center gap-2 text-xs font-bold text-[#142360] bg-[#EEF2FB] hover:bg-[#142360] hover:text-white px-3.5 py-2 rounded-full border border-[#E5EAF2] transition-all shadow-2xs group"
+              >
+                <Linkedin className="w-4 h-4 transition-colors" />
+                <span>LinkedIn</span>
+              </a>
+
+              <a 
+                href="https://www.instagram.com/finackle/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Finackle on Instagram"
+                className="inline-flex items-center gap-2 text-xs font-bold text-[#142360] bg-[#EEF2FB] hover:bg-[#142360] hover:text-white px-3.5 py-2 rounded-full border border-[#E5EAF2] transition-all shadow-2xs group"
+              >
+                <Instagram className="w-4 h-4 transition-colors" />
+                <span>Instagram</span>
+              </a>
+
+              <a 
+                href="https://www.facebook.com/finackle/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Finackle on Facebook"
+                className="inline-flex items-center gap-2 text-xs font-bold text-[#142360] bg-[#EEF2FB] hover:bg-[#142360] hover:text-white px-3.5 py-2 rounded-full border border-[#E5EAF2] transition-all shadow-2xs group"
+              >
+                <Facebook className="w-4 h-4 transition-colors" />
+                <span>Facebook</span>
+              </a>
+            </div>
           </div>
           
           <div className="md:col-span-3">
@@ -76,10 +101,40 @@ export const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom copyright */}
+        {/* Bottom copyright & Socials */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-[#667085]">
           <p>© {new Date().getFullYear()} Finackle. Strategic Finance &amp; Business Insights Partner. All rights reserved.</p>
           <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <a 
+                href="https://www.linkedin.com/company/finackle/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="w-7 h-7 rounded-full bg-[#EEF2FB] hover:bg-[#142360] text-[#142360] hover:text-white flex items-center justify-center transition-colors"
+              >
+                <Linkedin className="w-3.5 h-3.5" />
+              </a>
+              <a 
+                href="https://www.instagram.com/finackle/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+                className="w-7 h-7 rounded-full bg-[#EEF2FB] hover:bg-[#142360] text-[#142360] hover:text-white flex items-center justify-center transition-colors"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
+              <a 
+                href="https://www.facebook.com/finackle/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-7 h-7 rounded-full bg-[#EEF2FB] hover:bg-[#142360] text-[#142360] hover:text-white flex items-center justify-center transition-colors"
+              >
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
+            </div>
+            <span className="text-[#667085]/40">·</span>
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEF2FB] text-[#13215D] border border-[#E5EAF2] text-[11px] font-semibold">
               United Arab Emirates
             </span>
