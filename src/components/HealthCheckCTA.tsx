@@ -1,21 +1,66 @@
 import { useState } from 'react';
 import { ScrollReveal } from './ScrollReveal';
-import { ArrowRight, CheckCircle2, Clock, Calendar, ShieldCheck, Send } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Clock, Calendar, ShieldCheck, Send, Loader2, AlertCircle } from 'lucide-react';
 
 export const HealthCheckCTA = () => {
   const [formData, setFormData] = useState({
-    fullName: '',
-    companyName: '',
+    name: '',
     email: '',
     phone: '',
-    message: ''
+    company: '',
+    service: 'Finance Health Check & Diagnostic Review',
+    message: '',
+    hp_field: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.email) return;
-    setSubmitted(true);
+    if (!formData.name.trim() || !formData.email.trim()) return;
+
+    setIsSubmitting(true);
+    setErrorMessage(null);
+
+    try {
+      const response = await fetch('/api/send-enquiry.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          company: formData.company.trim(),
+          service: formData.service.trim(),
+          message: formData.message.trim(),
+          hp_field: formData.hp_field.trim(),
+        }),
+      });
+
+      const data = await response.json().catch(() => null);
+
+      if (response.ok && data && data.success) {
+        setSubmitted(true);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: 'Finance Health Check & Diagnostic Review',
+          message: '',
+          hp_field: '',
+        });
+      } else {
+        setErrorMessage('Something went wrong. Please try again or contact us directly.');
+      }
+    } catch {
+      setErrorMessage('Something went wrong. Please try again or contact us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -115,16 +160,17 @@ export const HealthCheckCTA = () => {
                       <div className="w-16 h-16 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mx-auto mb-6">
                         <CheckCircle2 className="w-8 h-8" />
                       </div>
-                      <h4 className="text-2xl font-bold text-[#13215D] mb-2">
-                        Finance Health Check Requested
+                      <h4 className="text-2xl font-bold text-[#13215D] mb-3">
+                        Enquiry Received
                       </h4>
-                      <p className="text-[#667085] text-sm max-w-md mx-auto mb-8 leading-relaxed">
-                        Thank you, {formData.fullName}. A member of our strategic finance advisory team will contact you shortly to confirm a convenient time to connect.
+                      <p className="text-[#667085] text-base max-w-md mx-auto mb-8 leading-relaxed font-medium">
+                        Thank you! Your enquiry has been submitted successfully. Our team will contact you shortly.
                       </p>
                       <button 
                         onClick={() => {
                           setSubmitted(false);
-                          setFormData({ fullName: '', companyName: '', email: '', phone: '', message: '' });
+                          setFormData({ name: '', email: '', phone: '', company: '', service: 'Finance Health Check & Diagnostic Review', message: '', hp_field: '' });
+                          setErrorMessage(null);
                         }}
                         className="bg-[#142360] text-white text-xs font-bold px-6 py-3 rounded-full hover:bg-[#13215D] transition-colors"
                       >
@@ -142,42 +188,40 @@ export const HealthCheckCTA = () => {
                         </p>
                       </div>
 
+                      {/* Honeypot field for spam prevention - hidden from humans */}
+                      <div className="hidden" aria-hidden="true">
+                        <label htmlFor="hp_field">Leave this field blank</label>
+                        <input
+                          type="text"
+                          id="hp_field"
+                          name="hp_field"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          value={formData.hp_field}
+                          onChange={(e) => setFormData({ ...formData, hp_field: e.target.value })}
+                        />
+                      </div>
+
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        {/* Full Name */}
+                        {/* Name */}
                         <div>
                           <label className="block text-xs font-bold text-[#13215D] uppercase tracking-wider mb-2">
-                            Full Name <span className="text-red-500">*</span>
+                            Name <span className="text-red-500">*</span>
                           </label>
                           <input 
                             type="text"
                             required
                             placeholder="e.g. John Doe"
-                            value={formData.fullName}
-                            onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                            value={formData.name}
+                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             className="w-full px-4 py-3 rounded-xl border border-[#E5EAF2] text-sm text-[#13215D] focus:outline-none focus:border-[#142360] focus:ring-2 focus:ring-[#142360]/10 bg-[#F6F8FC]"
                           />
                         </div>
 
-                        {/* Company Name */}
-                        <div>
-                          <label className="block text-xs font-bold text-[#13215D] uppercase tracking-wider mb-2">
-                            Company Name
-                          </label>
-                          <input 
-                            type="text"
-                            placeholder="e.g. Acme Trading LLC"
-                            value={formData.companyName}
-                            onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-                            className="w-full px-4 py-3 rounded-xl border border-[#E5EAF2] text-sm text-[#13215D] focus:outline-none focus:border-[#142360] focus:ring-2 focus:ring-[#142360]/10 bg-[#F6F8FC]"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {/* Email */}
                         <div>
                           <label className="block text-xs font-bold text-[#13215D] uppercase tracking-wider mb-2">
-                            Work Email <span className="text-red-500">*</span>
+                            Email <span className="text-red-500">*</span>
                           </label>
                           <input 
                             type="email"
@@ -188,11 +232,13 @@ export const HealthCheckCTA = () => {
                             className="w-full px-4 py-3 rounded-xl border border-[#E5EAF2] text-sm text-[#13215D] focus:outline-none focus:border-[#142360] focus:ring-2 focus:ring-[#142360]/10 bg-[#F6F8FC]"
                           />
                         </div>
+                      </div>
 
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {/* Phone */}
                         <div>
                           <label className="block text-xs font-bold text-[#13215D] uppercase tracking-wider mb-2">
-                            Phone Number
+                            Phone
                           </label>
                           <input 
                             type="tel"
@@ -202,12 +248,47 @@ export const HealthCheckCTA = () => {
                             className="w-full px-4 py-3 rounded-xl border border-[#E5EAF2] text-sm text-[#13215D] focus:outline-none focus:border-[#142360] focus:ring-2 focus:ring-[#142360]/10 bg-[#F6F8FC]"
                           />
                         </div>
+
+                        {/* Company */}
+                        <div>
+                          <label className="block text-xs font-bold text-[#13215D] uppercase tracking-wider mb-2">
+                            Company
+                          </label>
+                          <input 
+                            type="text"
+                            placeholder="e.g. Acme Trading LLC"
+                            value={formData.company}
+                            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                            className="w-full px-4 py-3 rounded-xl border border-[#E5EAF2] text-sm text-[#13215D] focus:outline-none focus:border-[#142360] focus:ring-2 focus:ring-[#142360]/10 bg-[#F6F8FC]"
+                          />
+                        </div>
+                      </div>
+
+                      {/* Service */}
+                      <div>
+                        <label className="block text-xs font-bold text-[#13215D] uppercase tracking-wider mb-2">
+                          Service
+                        </label>
+                        <select
+                          value={formData.service}
+                          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl border border-[#E5EAF2] text-sm text-[#13215D] focus:outline-none focus:border-[#142360] focus:ring-2 focus:ring-[#142360]/10 bg-[#F6F8FC]"
+                        >
+                          <option value="Finance Health Check & Diagnostic Review">Finance Health Check & Diagnostic Review</option>
+                          <option value="CFO Advisory Services">CFO Advisory Services</option>
+                          <option value="Financial Reporting & Dashboards">Financial Reporting & Dashboards</option>
+                          <option value="Budgeting & Forecasting">Budgeting & Forecasting</option>
+                          <option value="Cash Flow Management">Cash Flow Management</option>
+                          <option value="Accounting & Bookkeeping Services">Accounting & Bookkeeping Services</option>
+                          <option value="Corporate Tax & Compliance Advisory">Corporate Tax & Compliance Advisory</option>
+                          <option value="Other Strategic Advisory">Other Strategic Advisory</option>
+                        </select>
                       </div>
 
                       {/* Message */}
                       <div>
                         <label className="block text-xs font-bold text-[#13215D] uppercase tracking-wider mb-2">
-                          Message / Key Questions You Want to Answer
+                          Message
                         </label>
                         <textarea 
                           rows={3}
@@ -218,12 +299,29 @@ export const HealthCheckCTA = () => {
                         ></textarea>
                       </div>
 
+                      {errorMessage && (
+                        <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs flex items-center gap-2">
+                          <AlertCircle className="w-4 h-4 shrink-0 text-red-500" />
+                          <span>{errorMessage}</span>
+                        </div>
+                      )}
+
                       <button 
                         type="submit"
-                        className="w-full bg-[#142360] text-white py-4 px-8 rounded-full font-bold hover:bg-[#1a2e7c] transition-all flex items-center justify-center gap-2 text-base shadow-lg shadow-black/20 mt-2"
+                        disabled={isSubmitting}
+                        className="w-full bg-[#142360] text-white py-4 px-8 rounded-full font-bold hover:bg-[#1a2e7c] transition-all flex items-center justify-center gap-2 text-base shadow-lg shadow-black/20 mt-2 disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
                       >
-                        Book Your Finance Health Check
-                        <Send className="w-4 h-4" />
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="w-4 h-4 animate-spin text-[#14CBC9]" />
+                            <span>Submitting Your Enquiry...</span>
+                          </>
+                        ) : (
+                          <>
+                            <span>Book Your Finance Health Check</span>
+                            <Send className="w-4 h-4" />
+                          </>
+                        )}
                       </button>
 
                       <p className="text-[11px] text-[#667085] text-center mt-3 font-medium">

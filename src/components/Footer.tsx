@@ -74,8 +74,8 @@ export const Footer = () => {
                   B.C. 1308408 Ajman Free Zone C1 Building<br/>Ajman, United Arab Emirates
                 </li>
                 <li>
-                  <a href="mailto:contactus@finackle.com" className="hover:text-[#13215D] text-[#142360] font-semibold transition-colors underline-offset-4 hover:underline">
-                    contactus@finackle.com
+                  <a href="mailto:info@finackle.com" className="hover:text-[#13215D] text-[#142360] font-semibold transition-colors underline-offset-4 hover:underline">
+                    info@finackle.com
                   </a>
                 </li>
                 <li>
