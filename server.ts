@@ -328,6 +328,20 @@ Website: https://finackle.com
     }
   };
 
+  app.get("/api/send-enquiry.php", (_req, res) => {
+    res.json({
+      status: "online",
+      endpoint: "/api/send-enquiry.php",
+      message: "Finackle Enquiry Backend is active. Submit enquiries via POST.",
+      runtime: "preview-node-emulation",
+      curl_available: true,
+      resend_configured: Boolean(process.env.RESEND_API_KEY),
+      admin_recipient: process.env.ADMIN_EMAIL || "sales@finackle.com",
+      sender_address: process.env.FROM_EMAIL || "Finackle <website@finackle.com>",
+      timestamp: new Date().toISOString(),
+    });
+  });
+
   app.post("/api/send-enquiry.php", handleEnquiry);
   app.post("/api/contact", handleEnquiry);
 
