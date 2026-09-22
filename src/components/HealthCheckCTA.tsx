@@ -74,7 +74,7 @@ export const HealthCheckCTA = () => {
                   Start the Conversation With an Experienced Finance Team
                 </h3>
                 <p className="text-slate-300 text-base leading-relaxed mb-8">
-                  No sales pitches or rigid contracts. Tell us about your business, where the numbers feel cloudy, and we will outline how better visibility can start.
+                  Tell us about your business, where the numbers feel cloudy, and we will outline how better visibility can start.
                 </p>
 
                 <div className="space-y-4">

@@ -44,7 +44,7 @@ export const Footer = () => {
               </a>
 
               <a 
-                href="https://www.instagram.com/finackle/"
+                href="https://www.instagram.com/finackle_fze?utm_source=qr&stkn=MWh5azN1eGNM3J6eg=="
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Finackle on Instagram"
@@ -55,7 +55,7 @@ export const Footer = () => {
               </a>
 
               <a 
-                href="https://www.facebook.com/finackle/"
+                href="https://www.facebook.com/share/1FmBRXgvi/?mibextid=wwXlfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Finackle on Facebook"
@@ -124,7 +124,7 @@ export const Footer = () => {
                 <Linkedin className="w-3.5 h-3.5" />
               </a>
               <a 
-                href="https://www.instagram.com/finackle/"
+                href="https://www.instagram.com/finackle_fze?utm_source=qr&stkn=MWh5azN1eGNM3J6eg=="
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
@@ -133,7 +133,7 @@ export const Footer = () => {
                 <Instagram className="w-3.5 h-3.5" />
               </a>
               <a 
-                href="https://www.facebook.com/finackle/"
+                href="https://www.facebook.com/share/1FmBRXgvi/?mibextid=wwXlfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
@@ -147,7 +147,7 @@ export const Footer = () => {
               United Arab Emirates
             </span>
             <span className="text-[#667085]/40">·</span>
-            <span className="text-[#667085]">Confidential Financial Management</span>
+            {/* <span className="text-[#667085]">Confidential Financial Management</span> */}
           </div>
         </div>
       </div>

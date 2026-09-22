@@ -524,7 +524,7 @@ export const InteractiveDashboard = () => {
                       <div>
                         <div className="flex items-center justify-between mb-4">
                           <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300">
-                            MONTHLY DECISION CADENCE
+                            RECOMMENDED BUSINESS ACTIONS
                           </h4>
                           <span className="text-[10px] font-bold text-[#1acbc9] bg-white/10 px-2.5 py-0.5 rounded-full">
                             July Action Plan
