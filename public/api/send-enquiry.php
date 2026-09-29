@@ -13,7 +13,7 @@
 // -------------------------------------------------------------------------
 // You can set your Resend API Key directly here between the quotes,
 // OR in config.php, OR via an environment variable.
-$defaultResendApiKey = 're_123456789_REPLACE_WITH_YOUR_KEY';
+$defaultResendApiKey = 're_R4ZgFZXf_DqDGxV6ZQGaQkLy91T1yiZJa';
 $adminEmail          = 'info@finackle.com';
 $fromEmail           = 'Finackle <website@finackle.com>';
 $autoReplySubject    = 'Thank You for Contacting Finackle';
