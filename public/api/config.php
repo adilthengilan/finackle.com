@@ -42,5 +42,5 @@ return [
      * Recipient Email Address (To):
      * Where customer enquiries are delivered.
      */
-    'admin_email' => $envAdmin ?: 'sales@finackle.com',
+    'admin_email' => $envAdmin ?: 'info@finackle.com',
 ];

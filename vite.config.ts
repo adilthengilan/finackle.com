@@ -28,7 +28,7 @@ function phpApiDevPlugin(): Plugin {
                 endpoint: '/api/send-enquiry.php',
                 message:
                   'Finackle Enquiry Backend is active. In production on Hostinger, this endpoint is executed natively by PHP.',
-                admin_recipient: 'sales@finackle.com',
+                admin_recipient: 'info@finackle.com',
                 sender_address: 'Finackle <website@finackle.com>',
                 timestamp: new Date().toISOString(),
               },
