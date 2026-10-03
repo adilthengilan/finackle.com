@@ -11,6 +11,7 @@ import { OurApproach } from './components/OurApproach';
 import { About } from './components/About';
 import { HealthCheckCTA } from './components/HealthCheckCTA';
 import { Footer } from './components/Footer';
+import { WhatsAppButton } from './components/WhatsAppButton';
 
 export function App() {
   return (
@@ -53,6 +54,9 @@ export function App() {
 
       {/* 15. Footer */}
       <Footer />
+
+      {/* 16. Floating WhatsApp Connect Button */}
+      <WhatsAppButton />
     </div>
   );
 }
