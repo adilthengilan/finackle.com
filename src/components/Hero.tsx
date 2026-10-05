@@ -25,7 +25,7 @@ export const Hero = () => {
             
             {/* Supporting Description */}
             <p className="text-[#13215D]/85 text-base md:text-xl leading-relaxed max-w-3xl mb-10 font-normal">
-              Finackle helps SMEs, e-commerce businesses, and F&B companies build stronger finance operations, gain clear visibility into business performance, and make confident business decisions.
+              Finackle F.Z.E helps SMEs, e-commerce businesses, and F&B companies build stronger finance operations, gain clear visibility into business performance, and make confident business decisions.
             </p>
             
             {/* Action Buttons with Primary and Secondary CTAs */}
