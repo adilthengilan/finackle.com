@@ -52,7 +52,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       {/* Minimal "Connect now / Talk to an adviser" speech bubble */}
       {showPrompt && !isDismissed && (
         <div
-          className={`pointer-events-auto mb-2 max-w-[210px] sm:max-w-[230px] bg-white rounded-xl shadow-lg border border-gray-100 p-2.5 transition-all duration-300 ease-out origin-bottom-right ${
+          className={`pointer-events-auto mb-2 max-w-[210px] sm:max-w-[230px] bg-white rounded-[5px] shadow-lg border border-gray-100 p-2.5 transition-all duration-300 ease-out origin-bottom-right ${
             pulse ? 'scale-105 shadow-xl ring-2 ring-[#25D366]/40' : 'scale-100'
           }`}
           style={{

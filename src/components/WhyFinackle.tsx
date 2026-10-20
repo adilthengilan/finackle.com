@@ -1,115 +1,74 @@
+import React from 'react';
+import { Building2, Award, Laptop, ShieldCheck } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
-import { Award, Globe2, Cpu, BarChart2, Lightbulb } from 'lucide-react';
 
-const capabilities = [
-  {
-    number: "01",
-    title: "Finance Expertise",
-    description: "Experienced finance support focused on practical business needs.",
-    icon: Award
-  },
-  {
-    number: "02",
-    title: "UAE Business Understanding",
-    description: "An understanding of the financial and operational environment businesses face in the UAE.",
-    icon: Globe2
-  },
-  {
-    number: "03",
-    title: "Accounting System Knowledge",
-    description: "Support for building reliable accounting systems and processes.",
-    icon: Cpu
-  },
-  {
-    number: "04",
-    title: "Reporting Capability",
-    description: "Clear management reporting that helps owners understand performance.",
-    icon: BarChart2
-  },
-  {
-    number: "05",
-    title: "Advisory Support",
-    description: "Practical guidance when financial decisions become more complex.",
-    icon: Lightbulb
-  }
-];
+export const WhyFinackle: React.FC = () => {
+  const cards = [
+    {
+      icon: Building2,
+      title: 'UAE-Based Finance Partner',
+      text: 'Supporting businesses in the UAE with practical accounting, reporting, and finance solutions.',
+    },
+    {
+      icon: Award,
+      title: 'Experienced Finance Professionals',
+      text: 'A team with expertise in accounting, reporting, cash flow management, and business insights.',
+    },
+    {
+      icon: Laptop,
+      title: 'Technology-Enabled Finance',
+      text: 'Using modern finance tools and systems to improve accuracy, efficiency, and visibility.',
+    },
+    {
+      icon: ShieldCheck,
+      title: 'Confidential & Secure',
+      text: 'Your financial information is handled with strict confidentiality and controlled access.',
+    },
+  ];
 
-export const WhyFinackle = () => {
   return (
-    <section id="why-finackle" className="py-24 px-6 md:px-12 bg-white">
-      <div className="max-w-7xl mx-auto">
-        
-        {/* Section Header */}
+    <section id="about" className="py-20 lg:py-28 bg-[#F4F7F8] scroll-mt-20">
+      <div id="why-finackle" className="scroll-mt-20" />
+      <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+        {/* Header */}
         <ScrollReveal>
-          <div className="max-w-3xl mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#EEF2FB] text-[#142360] text-xs font-bold uppercase tracking-wider mb-6 border border-[#E5EAF2]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#142360]"></span>
-              Why Finackle
-            </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#13215D] leading-tight mb-5 tracking-tight">
-              Finance Expertise Without the Cost of Building a Full Internal Finance Team.
+          <div className="max-w-2xl mb-16">
+            <span className="text-[12.5px] font-extrabold uppercase tracking-[0.14em] text-[#0B7F8A] block mb-3">
+              WHY FINACKLE
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-[46px] leading-[1.15] font-bold text-[#0F1F38] tracking-tight">
+              Built on Trust. Focused on{' '}
+              <span className="text-[#0B7F8A]">Your Growth.</span>
             </h2>
-            <p className="text-base md:text-lg text-[#667085] leading-relaxed font-normal">
-              Finackle helps growing businesses access experienced finance support without the cost of building a full internal finance team.
-            </p>
           </div>
         </ScrollReveal>
 
-        {/* Five Capability Blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {capabilities.map((cap, idx) => {
-            const Icon = cap.icon;
+        {/* 4 Cards Grid with Staggered Scroll Reveal */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {cards.map((card, idx) => {
+            const Icon = card.icon;
             return (
               <ScrollReveal key={idx} delay={idx * 0.08}>
-                <div className="bg-[#F6F8FC] rounded-[2rem] p-8 border border-[#E5EAF2] hover:border-[#142360]/40 hover:bg-white hover:shadow-xl hover:shadow-[#142360]/5 transition-all duration-300 h-full flex flex-col group">
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="w-12 h-12 rounded-2xl bg-[#EEF2FB] text-[#142360] flex items-center justify-center transition-all group-hover:bg-[#142360] group-hover:text-white shadow-2xs">
-                      <Icon className="w-6 h-6" />
+                <div className="h-full bg-white rounded-[5px] border border-[#D3DDE3] p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_36px_rgba(15,31,56,0.06)]">
+                  <div>
+                    {/* Sharp Icon Tile */}
+                    <div className="w-12 h-12 rounded-[5px] bg-[#D6F3F2] flex items-center justify-center text-[#0B7F8A] mb-6">
+                      <Icon className="w-6 h-6 stroke-[2]" />
                     </div>
-                    <span className="text-xs font-black text-[#667085]/60 tracking-widest uppercase group-hover:text-[#142360] transition-colors">
-                      {cap.number}
-                    </span>
+
+                    <h3 className="text-lg sm:text-[19px] font-bold text-[#0F1F38] tracking-tight mb-3">
+                      {card.title}
+                    </h3>
+
+                    <p className="text-[14.5px] leading-[1.6] text-[#3B4D66] font-normal">
+                      {card.text}
+                    </p>
                   </div>
-
-                  <h3 className="text-xl font-bold text-[#13215D] mb-3 group-hover:text-[#142360] transition-colors">
-                    {cap.title}
-                  </h3>
-
-                  <p className="text-sm text-[#667085] leading-relaxed font-normal mt-auto">
-                    {cap.description}
-                  </p>
                 </div>
               </ScrollReveal>
             );
           })}
-
-          {/* Sixth Card: Focus summary */}
-          <ScrollReveal delay={0.4}>
-            <div className="bg-[#13215D] text-white rounded-[2rem] p-8 border border-white/10 shadow-xl shadow-black/20 h-full flex flex-col justify-between">
-              <div>
-                <span className="text-[10px] font-black uppercase tracking-wider text-[#EEF2FB] bg-white/10 px-3 py-1 rounded-full inline-block mb-4">
-                  Commitment
-                </span>
-                <h3 className="text-xl font-bold mb-3">
-                  A True Finance Partner, Not a Transactional Vendor
-                </h3>
-                <p className="text-xs md:text-sm text-slate-300 leading-relaxed font-normal mb-6">
-                  We work alongside your business with a structured monthly reporting and review process that keeps you informed and in control.
-                </p>
-                <a
-                  href="#health-check-form"
-                  className="inline-flex items-center gap-2 text-xs font-bold text-white bg-white/15 hover:bg-white/25 border border-white/20 px-5 py-2.5 rounded-full transition-all w-fit"
-                >
-                  Talk to Our Team
-                </a>
-              </div>
-              <div className="pt-6 border-t border-white/15 mt-6 text-xs text-slate-300 font-medium">
-                Headquartered in the UAE · Dedicated ongoing finance support
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
-
       </div>
     </section>
   );

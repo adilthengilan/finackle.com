@@ -1,90 +1,87 @@
+import React from 'react';
+import { Layers, Clock, EyeOff } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
-import { FileText, EyeOff, Compass, Layers } from 'lucide-react';
 
-const challenges = [
-  {
-    number: "01",
-    title: "Reports Are Available But Difficult to Interpret",
-    description: "Financial reports exist, but the numbers do not always clearly explain what is changing or why it matters.",
-    icon: FileText
-  },
-  {
-    number: "02",
-    title: "Limited Visibility",
-    description: "Owners lack clear visibility into profitability, cash flow, and business performance.",
-    icon: EyeOff
-  },
-  {
-    number: "03",
-    title: "Decisions Without Reliable Insights",
-    description: "Important decisions are sometimes made without enough financial information or context.",
-    icon: Compass
-  },
-  {
-    number: "04",
-    title: "Finance Becomes Harder as the Business Grows",
-    description: "Processes become more complex, information becomes fragmented, and finance can become increasingly dependent on individuals.",
-    icon: Layers
-  }
-];
+export const TheChallenge: React.FC = () => {
+  const cards = [
+    {
+      icon: Layers,
+      title: 'Fragmented information',
+      text: 'Sales in one tool, bank in another, receipts in a chat thread. No single version of the truth.',
+      quote: '"Which spreadsheet is the right one?"',
+    },
+    {
+      icon: Clock,
+      title: 'Manual processes',
+      text: 'Copy-paste reconciliations, chasing approvals, rebuilding the same report every month.',
+      quote: '"Month-end takes us three weeks."',
+    },
+    {
+      icon: EyeOff,
+      title: 'Limited visibility',
+      text: "Profit by product, next month's cash, the real cost of a channel. Too often it's a guess.",
+      quote: '"Profitable on paper, short on cash."',
+    },
+  ];
 
-export const TheChallenge = () => {
   return (
-    <section id="challenge" className="relative pt-6 pb-24 md:pt-10 md:pb-28 px-6 md:px-12 overflow-hidden text-[#13215D] bg-gradient-to-b from-[#1acbc9] via-[#e2f9f8] to-[#F6F8FC] border-b border-[#E5EAF2]">
-      {/* Blended Ambient Blur Orbs */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#1acbc9]/30 rounded-full blur-3xl pointer-events-none -translate-y-1/2"></div>
-      <div className="absolute bottom-10 right-0 w-[450px] h-[450px] bg-[#1acbc9]/20 rounded-full blur-3xl pointer-events-none"></div>
-
-      {/* Subtle Geometric Dot Mesh */}
-      <div className="absolute inset-0 bg-[radial-gradient(#13215D0a_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none"></div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        
+    <section id="the-challenge" className="py-20 lg:py-28 bg-[#F4F7F8]">
+      <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <ScrollReveal>
-          <div className="max-w-3xl mb-16">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/75 backdrop-blur-md text-[#13215D] text-xs font-bold uppercase tracking-wider mb-6 border border-white/90 shadow-sm ring-1 ring-[#1acbc9]/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#13215D]"></span>
-              The Challenge
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 mb-16 items-start">
+            <div className="lg:col-span-7">
+              <span className="text-[12.5px] font-extrabold uppercase tracking-[0.14em] text-[#0B7F8A] block mb-3">
+                THE CHALLENGE
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-[46px] leading-[1.15] font-bold text-[#0F1F38] tracking-tight">
+                Growing businesses rarely lack data.{' '}
+                <span className="text-[#0B7F8A]">They lack clarity.</span>
+              </h2>
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-[#13215D] leading-tight mb-5 tracking-tight">
-              Growing Businesses Often Have Financial Information, But Not the Clarity Needed to Make Better Decisions.
-            </h2>
-            <p className="text-base md:text-lg text-[#13215D]/80 leading-relaxed font-normal">
-              Financial information may exist, but that does not always mean business owners have a clear view of what is really happening.
-            </p>
+            <div className="lg:col-span-5 lg:pt-8">
+              <p className="text-[17px] leading-[1.6] text-[#3B4D66] font-normal">
+                Financial information is fragmented, processes are manual, and there is limited
+                visibility into profitability, cash flow and performance. Without reliable reporting
+                and structured systems, confident decisions get harder.
+              </p>
+            </div>
           </div>
         </ScrollReveal>
 
-        {/* Four Problem Cards with Frosted Glass styling */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {challenges.map((item, idx) => {
-            const Icon = item.icon;
+        {/* 3 Challenge Cards with Staggered Scroll Reveal */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          {cards.map((card, idx) => {
+            const Icon = card.icon;
             return (
               <ScrollReveal key={idx} delay={idx * 0.08}>
-                <div className="bg-white/70 hover:bg-white/90 backdrop-blur-xl rounded-[2rem] p-8 border border-white/85 shadow-[0_10px_35px_rgba(19,33,93,0.06)] hover:shadow-[0_16px_45px_rgba(19,33,93,0.12)] transition-all duration-300 h-full flex flex-col group">
-                  <div className="flex items-center justify-between mb-8">
-                    <span className="text-xs font-black text-[#13215D]/50 tracking-widest uppercase group-hover:text-[#13215D] transition-colors">
-                      {item.number}
-                    </span>
-                    <div className="w-11 h-11 rounded-xl bg-white/90 border border-white text-[#13215D] flex items-center justify-center transition-all group-hover:bg-[#13215D] group-hover:text-white shadow-sm">
-                      <Icon className="w-5 h-5" />
+                <div className="h-full bg-white rounded-[5px] border border-[#D3DDE3] p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-[5px] hover:shadow-[0_16px_36px_rgba(15,31,56,0.08)] group">
+                  <div>
+                    {/* Amber icon tile */}
+                    <div className="w-12 h-12 rounded-[5px] bg-[#FBEBD6] flex items-center justify-center text-[#9A5A12] mb-6">
+                      <Icon className="w-6 h-6 stroke-[2]" />
                     </div>
+
+                    <h3 className="text-xl sm:text-[22px] font-bold text-[#0F1F38] mb-3 tracking-tight">
+                      {card.title}
+                    </h3>
+
+                    <p className="text-[15.5px] leading-[1.6] text-[#3B4D66] font-normal mb-8">
+                      {card.text}
+                    </p>
                   </div>
-                  
-                  <h3 className="text-lg font-bold text-[#13215D] mb-3 leading-snug group-hover:text-[#142360] transition-colors">
-                    {item.title}
-                  </h3>
-                  
-                  <p className="text-sm text-[#13215D]/75 font-normal leading-relaxed mt-auto">
-                    {item.description}
-                  </p>
+
+                  {/* Amber quote in Playfair Display italic */}
+                  <div className="pt-4 border-t border-[#D3DDE3]/50">
+                    <span className="text-[15.5px] font-semibold text-[#9A5A12] italic font-editorial tracking-wide">
+                      {card.quote}
+                    </span>
+                  </div>
                 </div>
               </ScrollReveal>
             );
           })}
         </div>
-
       </div>
     </section>
   );

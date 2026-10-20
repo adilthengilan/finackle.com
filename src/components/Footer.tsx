@@ -1,153 +1,107 @@
-import { Linkedin, Instagram, Facebook } from 'lucide-react';
+import React from 'react';
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   return (
-    <footer className="bg-gradient-to-b from-[#F8FAFC] to-white text-[#13215D] pt-20 pb-12 border-t border-[#E5EAF2] relative overflow-hidden">
-      {/* Subtle ambient glow */}
-      <div className="absolute top-0 right-1/4 w-[450px] h-[450px] bg-[#1acbc9]/10 rounded-full blur-3xl pointer-events-none -translate-y-1/2"></div>
-      <div className="absolute bottom-0 left-10 w-[350px] h-[350px] bg-[#13215D]/5 rounded-full blur-2xl pointer-events-none"></div>
+    <footer className="bg-[#0C1E3C] text-white pt-16 pb-12 border-t border-white/10">
+      <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-14 mb-14">
+          {/* Brand & Description */}
+          <div className="md:col-span-6 flex flex-col items-start">
+            <a href="#" className="flex items-center gap-3 mb-5 group">
+              {/* Logo on white tile with 5px radius */}
+              <div className="bg-white rounded-[5px] p-1.5 flex items-center justify-center shadow-md transition-transform group-hover:scale-105">
+                <img
+                  src="/finackle-logo.png"
+                  alt="Finackle"
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
+              <span className="text-2xl font-bold tracking-tight text-white">
+                Finackle
+              </span>
+            </a>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-        
-        {/* Footer Top Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16 border-b border-[#E5EAF2] pb-16">
-          <div className="md:col-span-5">
-                  <a href="#" className="flex items-center group pl-1">
-  <img
-    src="/finackle-logo.png"
-    alt="Finackle"
-    className="h-10 sm:h-12 w-auto object-contain group-hover:opacity-90 transition-opacity"
-  />
-</a>
-            {/* <p className="text-[#EEF2FB] font-bold text-sm mb-2"> */}
-            {/* <h3 className="font-black text-2xl tracking-tight text-[#13215D] mb-3">
-              FINACKLE<span className="text-[#1acbc9]">.</span>
-            </h3> */}
-            <p className="text-[#13215D] font-bold text-sm mb-2">
-              Strategic Finance &amp; Business Insights Partner
+            <p className="text-[15px] leading-relaxed text-white/70 max-w-md font-normal">
+              Turning financial data into clarity, control and better business decisions for growing
+              UAE businesses.
             </p>
-            <p className="text-[#667085] text-sm leading-relaxed max-w-sm font-normal mb-6">
-              Helping businesses understand performance, improve cash flow visibility, and make confident financial decisions.
-            </p>
-
-            {/* Official Finackle Social Channels */}
-            <div className="flex flex-wrap items-center gap-2.5">
-              <a 
-                href="https://www.linkedin.com/company/finackle/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Finackle on LinkedIn"
-                className="inline-flex items-center gap-2 text-xs font-bold text-[#142360] bg-[#EEF2FB] hover:bg-[#142360] hover:text-white px-3.5 py-2 rounded-full border border-[#E5EAF2] transition-all shadow-2xs group"
-              >
-                <Linkedin className="w-4 h-4 transition-colors" />
-                <span>LinkedIn</span>
-              </a>
-
-              <a 
-                href="https://www.instagram.com/finackle_fze?utm_source=qr&stkn=MWh5azN1eGNM3J6eg=="
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Finackle on Instagram"
-                className="inline-flex items-center gap-2 text-xs font-bold text-[#142360] bg-[#EEF2FB] hover:bg-[#142360] hover:text-white px-3.5 py-2 rounded-full border border-[#E5EAF2] transition-all shadow-2xs group"
-              >
-                <Instagram className="w-4 h-4 transition-colors" />
-                <span>Instagram</span>
-              </a>
-
-              <a 
-                href="https://www.facebook.com/share/1FmBRXgvi/?mibextid=wwXlfr"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Finackle on Facebook"
-                className="inline-flex items-center gap-2 text-xs font-bold text-[#142360] bg-[#EEF2FB] hover:bg-[#142360] hover:text-white px-3.5 py-2 rounded-full border border-[#E5EAF2] transition-all shadow-2xs group"
-              >
-                <Facebook className="w-4 h-4 transition-colors" />
-                <span>Facebook</span>
-              </a>
-            </div>
           </div>
-          
+
+          {/* Column "Explore" */}
           <div className="md:col-span-3">
-             <h4 className="font-bold text-[#13215D] text-xs uppercase tracking-wider mb-5">UAE Office &amp; Contact</h4>
-             <ul className="space-y-3 text-sm text-[#667085] font-normal">
-                <li className="leading-relaxed">
-                  B.C. 1308408 Ajman Free Zone C1 Building<br/>Ajman, United Arab Emirates
-                </li>
-                <li>
-                  <a href="mailto:info@finackle.com" className="hover:text-[#13215D] text-[#142360] font-semibold transition-colors underline-offset-4 hover:underline">
-                    info@finackle.com
-                  </a>
-                </li>
-                <li>
-                  <a href="tel:+971545022747" className="hover:text-[#13215D] text-[#142360] font-semibold transition-colors">
-                    +971 545022747
-                  </a>
-                </li>
-             </ul>
-          </div>
-          
-          <div className="md:col-span-2">
-             <h4 className="font-bold text-[#13215D] text-xs uppercase tracking-wider mb-5">Navigation</h4>
-             <ul className="space-y-2.5 text-sm text-[#667085] font-medium flex flex-col">
-                <a href="#challenge" className="hover:text-[#13215D] transition-colors w-fit">The Challenge</a>
-                <a href="#value" className="hover:text-[#13215D] transition-colors w-fit">How We Create Value</a>
-                <a href="#industries" className="hover:text-[#13215D] transition-colors w-fit">Industries</a>
-                <a href="#finance-function" className="hover:text-[#13215D] transition-colors w-fit">Finance Function</a>
-                <a href="#reporting" className="hover:text-[#13215D] transition-colors w-fit">Monthly Reporting</a>
-             </ul>
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#1FD6CB] mb-5">
+              Explore
+            </h4>
+            <ul className="space-y-3 text-[14.5px] font-medium text-white/75">
+              <li>
+                <a href="#quiz" className="hover:text-white transition-colors">
+                  Free Health Check
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="hover:text-white transition-colors">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#who-we-work-with" className="hover:text-white transition-colors">
+                  Industries
+                </a>
+              </li>
+              <li>
+                <a href="#how-we-help" className="hover:text-white transition-colors">
+                  How it works
+                </a>
+              </li>
+              <li>
+                <a href="#why-finackle" className="hover:text-white transition-colors">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#faq" className="hover:text-white transition-colors">
+                  FAQ
+                </a>
+              </li>
+            </ul>
           </div>
 
-          <div className="md:col-span-2">
-             <h4 className="font-bold text-[#13215D] text-xs uppercase tracking-wider mb-5">Company</h4>
-             <ul className="space-y-2.5 text-sm text-[#667085] font-medium flex flex-col">
-                <a href="#why-finackle" className="hover:text-[#13215D] transition-colors w-fit">Why Finackle</a>
-                <a href="#who-we-help" className="hover:text-[#13215D] transition-colors w-fit">Who We Help</a>
-                <a href="#our-approach" className="hover:text-[#13215D] transition-colors w-fit">Our Approach</a>
-                <a href="#about" className="hover:text-[#13215D] transition-colors w-fit">About</a>
-                <a href="#health-check-form" className="hover:text-[#13215D] transition-colors w-fit">Health Check</a>
-             </ul>
+          {/* Column "Contact" */}
+          <div className="md:col-span-3">
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-[#1FD6CB] mb-5">
+              Contact
+            </h4>
+            <ul className="space-y-3 text-[14.5px] font-medium text-white/75">
+              <li>
+                <a
+                  href="mailto:info@finackle.com"
+                  className="hover:text-[#1FD6CB] transition-colors"
+                >
+                  info@finackle.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/971545022747"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#1FD6CB] transition-colors"
+                >
+                  +971 54 502 2747
+                </a>
+              </li>
+              <li className="text-white/60">Ajman Free Zone, UAE</li>
+            </ul>
           </div>
         </div>
 
-        {/* Bottom copyright & Socials */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-medium text-[#667085]">
-          <p>© {new Date().getFullYear()} Finackle. Strategic Finance &amp; Business Insights Partner. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <a 
-                href="https://www.linkedin.com/company/finackle/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="w-7 h-7 rounded-full bg-[#EEF2FB] hover:bg-[#142360] text-[#142360] hover:text-white flex items-center justify-center transition-colors"
-              >
-                <Linkedin className="w-3.5 h-3.5" />
-              </a>
-              <a 
-                href="https://www.instagram.com/finackle_fze?utm_source=qr&stkn=MWh5azN1eGNM3J6eg=="
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-7 h-7 rounded-full bg-[#EEF2FB] hover:bg-[#142360] text-[#142360] hover:text-white flex items-center justify-center transition-colors"
-              >
-                <Instagram className="w-3.5 h-3.5" />
-              </a>
-              <a 
-                href="https://www.facebook.com/share/1FmBRXgvi/?mibextid=wwXlfr"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="w-7 h-7 rounded-full bg-[#EEF2FB] hover:bg-[#142360] text-[#142360] hover:text-white flex items-center justify-center transition-colors"
-              >
-                <Facebook className="w-3.5 h-3.5" />
-              </a>
-            </div>
-            <span className="text-[#667085]/40">·</span>
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EEF2FB] text-[#13215D] border border-[#E5EAF2] text-[11px] font-semibold">
-              United Arab Emirates
-            </span>
-            <span className="text-[#667085]/40">·</span>
-            {/* <span className="text-[#667085]">Confidential Financial Management</span> */}
+        {/* Divider & Sub-Footer */}
+        <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-medium text-white/60 text-center sm:text-left">
+          <div>
+            &copy; {new Date().getFullYear()} Finackle F.Z.E. All rights reserved.
+          </div>
+          <div>
+            Finance operations &middot; Reporting &middot; Compliance &middot; CFO advisory
           </div>
         </div>
       </div>

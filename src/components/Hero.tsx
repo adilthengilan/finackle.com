@@ -1,124 +1,275 @@
-import { ArrowRight, ShieldCheck, TrendingUp, BarChart3, Sparkles, CheckCircle2, Clock } from 'lucide-react';
-import { ScrollReveal } from './ScrollReveal';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Check } from 'lucide-react';
 
-export const Hero = () => {
+export const Hero: React.FC = () => {
+  const [cashAmount, setCashAmount] = useState(0);
+  const [runwayMonths, setRunwayMonths] = useState(0);
+
+  // Counter animation on load: 0 to 238K and 0 to 4.2 in 1.5s
+  useEffect(() => {
+    let start: number | null = null;
+    const duration = 1500;
+
+    const step = (timestamp: number) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+
+      setCashAmount(Math.round(ease * 238));
+      setRunwayMonths(parseFloat((ease * 4.2).toFixed(1)));
+
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+
+    const animId = window.requestAnimationFrame(step);
+    return () => window.cancelAnimationFrame(animId);
+  }, []);
+
   return (
-    <section className="relative pt-28 pb-12 md:pt-36 md:pb-16 px-6 md:px-12 overflow-hidden text-[#13215D] bg-gradient-to-b from-white via-[#f0fcfb] to-[#1acbc9]">
-      {/* Premium Ambient Blur Orbs */}
-      <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-[#1acbc9]/30 rounded-full blur-3xl pointer-events-none -mr-32 -mt-32"></div>
-      <div className="absolute bottom-10 left-0 w-[600px] h-[600px] bg-[#1acbc9]/40 rounded-full blur-3xl pointer-events-none -ml-40"></div>
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-white/60 rounded-full blur-2xl pointer-events-none"></div>
+    <section className="relative overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-24 contour-bg">
+      {/* Background contour curves */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden select-none" aria-hidden="true">
+        <svg
+          className="absolute -top-24 right-0 w-[800px] h-[800px] text-slate-300/40"
+          viewBox="0 0 800 800"
+          fill="none"
+        >
+          <circle cx="500" cy="300" r="280" stroke="currentColor" strokeWidth="1" strokeDasharray="3 3" />
+          <circle cx="500" cy="300" r="380" stroke="currentColor" strokeWidth="1" />
+          <circle cx="500" cy="300" r="480" stroke="currentColor" strokeWidth="1" strokeDasharray="5 5" />
+          <path d="M 100,500 C 300,400 450,200 700,100" stroke="currentColor" strokeWidth="1.2" />
+          <path d="M 150,550 C 350,450 500,250 750,150" stroke="currentColor" strokeWidth="0.8" />
+        </svg>
+      </div>
 
-      {/* Subtle Geometric Dot Mesh */}
-      <div className="absolute inset-0 bg-[radial-gradient(#13215D0d_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none"></div>
+      <div className="max-w-[1180px] mx-auto px-4 sm:px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          {/* Left Column: Headline & Value Proposition */}
+          <div className="lg:col-span-7 flex flex-col items-start">
+            {/* 5px radius badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-[5px] bg-[#D6F3F2] border border-[#1FD6CB]/40 mb-6">
+              <span className="w-2 h-2 rounded-[2px] bg-[#0B7F8A] animate-ping" />
+              <span className="text-[11.5px] font-bold uppercase tracking-[0.12em] text-[#0B7F8A]">
+                UAE finance partner for growing businesses
+              </span>
+            </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        
-        {/* Main Hero Header */}
-        <ScrollReveal>
-          <div className="flex flex-col items-center text-center max-w-4xl mx-auto pt-4">
-            
-            {/* Main Headline in Deep Navy */}
-            <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold text-[#13215D] leading-[1.08] mb-6 tracking-tight drop-shadow-sm max-w-4xl">
-              Financial Clarity. Better Control. Smarter Business Decisions.
+            {/* Headline */}
+            <h1 className="text-4xl sm:text-5xl lg:text-[62px] leading-[1.08] font-extrabold tracking-[-0.035em] text-[#0F1F38] mb-6">
+              Turning financial data into{' '}
+              <span className="text-[#0B7F8A] sweep-underline sweep-underline-1">
+                clarity
+              </span>
+              ,{' '}
+              <span className="text-[#0B7F8A] sweep-underline sweep-underline-2">
+                control
+              </span>{' '}
+              &amp;{' '}
+              <span className="text-[#0B7F8A] sweep-underline sweep-underline-3">
+                better business decisions.
+              </span>
             </h1>
-            
-            {/* Supporting Description */}
-            <p className="text-[#13215D]/85 text-base md:text-xl leading-relaxed max-w-3xl mb-10 font-normal">
-              Finackle F.Z.E helps SMEs, e-commerce businesses, and F&B companies build stronger finance operations, gain clear visibility into business performance, and make confident business decisions.
+
+            {/* Intro paragraph */}
+            <p className="text-[17px] sm:text-[18px] leading-[1.65] text-[#334155] font-normal max-w-2xl mb-9">
+              Accounting, reporting, compliance and CFO advisory brought together into one
+              scalable finance system, so you always know where the business stands and what to do
+              next.
             </p>
-            
-            {/* Action Buttons with Primary and Secondary CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center w-full sm:w-auto mb-14">
-              <a 
-                href="#health-check-form"
-                className="w-full sm:w-auto bg-[#13215D] text-white px-8 py-4 rounded-full font-bold hover:bg-[#142360] hover:shadow-2xl hover:shadow-[#13215D]/30 transition-all flex items-center justify-center gap-2.5 text-base shadow-lg group"
+
+            {/* Action Buttons with 5px radius */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-6">
+              <a
+                href="#quiz"
+                className="inline-flex items-center justify-between sm:justify-start gap-3 bg-[#142F55] hover:bg-[#0B7F8A] text-white pl-6 pr-3.5 py-3.5 rounded-[5px] text-[14.5px] font-bold tracking-tight shadow-md hover:shadow-xl transition-all duration-200 group whitespace-nowrap"
               >
-                Book a Finance Health Check
-                <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
+                <span>Get my Free Finance Health Check</span>
+                <span className="w-7 h-7 rounded-[5px] bg-white/15 flex items-center justify-center text-white transition-transform group-hover:translate-x-1">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
               </a>
-              <a 
-                href="#health-check-form"
-                className="w-full sm:w-auto bg-white/75 border border-white/90 text-[#13215D] px-8 py-4 rounded-full font-bold hover:bg-white/95 hover:shadow-lg transition-all flex items-center justify-center gap-2 text-base backdrop-blur-xl shadow-sm"
+
+              <a
+                href="#services"
+                className="inline-flex items-center justify-center bg-white hover:bg-slate-50 border border-slate-300 text-[#0F1F38] px-6 py-3.5 rounded-[5px] text-[14.5px] font-bold tracking-tight shadow-xs hover:shadow-sm transition-all duration-200 whitespace-nowrap hover:border-[#0B7F8A]"
               >
-                Discuss Your Finance Challenges
+                View our services
               </a>
             </div>
 
-            {/* Frosted Glass Trust Pills */}
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-16">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-white/80 text-[11px] font-semibold text-[#13215D] shadow-sm">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#13215D]" />
-                UAE Free Zones &amp; Mainland
+            {/* What we do services pill row */}
+            <nav className="flex flex-wrap items-center gap-2 mb-8" aria-label="Our services">
+              <span className="w-full text-[12px] font-extrabold uppercase tracking-[0.14em] text-[#5D6E86]">
+                What we do
+              </span>
+              <a
+                href="#services"
+                className="inline-flex items-center h-9 px-3.5 rounded-[5px] border border-[#D3DDE3] bg-white text-[#0F1F38] text-[13px] font-bold hover:border-[#0B7F8A] hover:text-[#0B7F8A] transition-colors"
+              >
+                Bookkeeping
+              </a>
+              <a
+                href="#services"
+                className="inline-flex items-center h-9 px-3.5 rounded-[5px] border border-[#D3DDE3] bg-white text-[#0F1F38] text-[13px] font-bold hover:border-[#0B7F8A] hover:text-[#0B7F8A] transition-colors"
+              >
+                VAT &amp; Corporate Tax
+              </a>
+              <a
+                href="#services"
+                className="inline-flex items-center h-9 px-3.5 rounded-[5px] border border-[#D3DDE3] bg-white text-[#0F1F38] text-[13px] font-bold hover:border-[#0B7F8A] hover:text-[#0B7F8A] transition-colors"
+              >
+                Payroll &amp; WPS
+              </a>
+              <a
+                href="#services"
+                className="inline-flex items-center h-9 px-3.5 rounded-[5px] border border-[#D3DDE3] bg-white text-[#0F1F38] text-[13px] font-bold hover:border-[#0B7F8A] hover:text-[#0B7F8A] transition-colors"
+              >
+                Financial reporting
+              </a>
+              <a
+                href="#services"
+                className="inline-flex items-center h-9 px-3.5 rounded-[5px] border border-[#D3DDE3] bg-white text-[#0F1F38] text-[13px] font-bold hover:border-[#0B7F8A] hover:text-[#0B7F8A] transition-colors"
+              >
+                CFO advisory
+              </a>
+            </nav>
+
+            {/* Three Ticks */}
+            <div className="flex flex-wrap items-center gap-5 sm:gap-7 text-[13.5px] font-semibold text-[#0B7F8A]">
+              <div className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#0B7F8A] stroke-[2.5]" />
+                <span>UAE-based</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-white/80 text-[11px] font-semibold text-[#13215D] shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#13215D]" />
-                Structured Finance Review
+              <div className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#0B7F8A] stroke-[2.5]" />
+                <span>CFO Advisory</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/60 backdrop-blur-md border border-white/80 text-[11px] font-semibold text-[#13215D] shadow-sm">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#13215D]" />
-                IFRS &amp; FTA Tax Reconciled
+              <div className="flex items-center gap-1.5">
+                <Check className="w-4 h-4 text-[#0B7F8A] stroke-[2.5]" />
+                <span>Business Insights</span>
               </div>
             </div>
-
           </div>
-        </ScrollReveal>
 
-        {/* Premium Frosted Glass Feature Cards */}
-        <ScrollReveal delay={0.2}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            
-            {/* Card 1: Cash Flow & Runway */}
-            <div className="relative group bg-white/55 hover:bg-white/75 backdrop-blur-xl rounded-3xl p-7 border border-white/80 shadow-[0_10px_35px_rgba(19,33,93,0.06)] hover:shadow-[0_16px_45px_rgba(19,33,93,0.12)] transition-all duration-300">
-              <div className="w-12 h-12 rounded-2xl bg-white/80 border border-white/90 flex items-center justify-center text-[#13215D] mb-5 shadow-sm">
-                <TrendingUp className="w-6 h-6 text-[#13215D]" />
+          {/* Right Column: Dashboard Card with 5px radius */}
+          <div className="lg:col-span-5 flex flex-col items-center">
+            <div className="w-full max-w-[450px] animate-float-slow">
+              <div className="bg-white/95 backdrop-blur-md rounded-[5px] border border-slate-300 p-6 sm:p-7 shadow-[0_20px_50px_rgba(15,31,56,0.09)]">
+                {/* Header */}
+                <div className="flex items-start justify-between mb-5 pb-3 border-b border-slate-100">
+                  <div>
+                    <span className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-[#0B7F8A] block">
+                      A CLEARER VIEW
+                    </span>
+                    <h3 className="text-xl font-bold text-[#0F1F38] tracking-tight mt-0.5">
+                      Your finance, in context.
+                    </h3>
+                  </div>
+                  <span className="text-[11px] font-bold text-[#0B7F8A] bg-[#D6F3F2] px-2.5 py-1 rounded-[5px] border border-[#1FD6CB]/30">
+                    Demo view
+                  </span>
+                </div>
+
+                {/* 2 Metric Boxes with 5px radius */}
+                <div className="grid grid-cols-2 gap-3 mb-5">
+                  <div className="bg-slate-50 rounded-[5px] p-3.5 border border-slate-200">
+                    <span className="text-[10.5px] font-bold uppercase tracking-wider text-slate-500 block">
+                      CASH POSITION
+                    </span>
+                    <div className="text-xl sm:text-2xl font-extrabold text-[#0F1F38] tabular-nums mt-1 tracking-tight">
+                      AED {cashAmount}K
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-medium block mt-0.5">
+                      Illustrative
+                    </span>
+                  </div>
+
+                  <div className="bg-slate-50 rounded-[5px] p-3.5 border border-slate-200">
+                    <span className="text-[10.5px] font-bold uppercase tracking-wider text-slate-500 block">
+                      CASH RUNWAY
+                    </span>
+                    <div className="text-xl sm:text-2xl font-extrabold text-[#0F1F38] tabular-nums mt-1 tracking-tight">
+                      {runwayMonths} months
+                    </div>
+                    <span className="text-[10px] text-slate-400 font-medium block mt-0.5">
+                      Illustrative
+                    </span>
+                  </div>
+                </div>
+
+                {/* Interactive Chart Canvas */}
+                <div className="mb-5 pt-1">
+                  <div className="relative h-28 w-full">
+                    <svg
+                      viewBox="0 0 360 90"
+                      className="w-full h-full overflow-visible"
+                      preserveAspectRatio="none"
+                    >
+                      <defs>
+                        <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#0B7F8A" stopOpacity="0.22" />
+                          <stop offset="100%" stopColor="#0B7F8A" stopOpacity="0.0" />
+                        </linearGradient>
+                      </defs>
+
+                      <path
+                        d="M 10,70 Q 70,68 120,55 T 230,48 T 350,15 L 350,85 L 10,85 Z"
+                        fill="url(#chartGradient)"
+                      />
+
+                      <path
+                        d="M 10,70 Q 70,68 120,55 T 230,48 T 350,15"
+                        fill="none"
+                        stroke="#0B7F8A"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        className="animate-draw-chart"
+                      />
+
+                      <circle cx="350" cy="15" r="4.5" fill="#142F55" stroke="#1FD6CB" strokeWidth="2.5" />
+                    </svg>
+                  </div>
+
+                  <div className="flex justify-between text-[11px] font-semibold text-slate-400 mt-2 px-1">
+                    <span>Jun</span>
+                    <span>Jul</span>
+                    <span>Aug</span>
+                    <span>Sep</span>
+                    <span>Oct</span>
+                    <span>Nov</span>
+                  </div>
+                </div>
+
+                {/* Bottom Bar with 5px radius */}
+                <a
+                  href="#health-check-form"
+                  className="w-full bg-[#142F55] hover:bg-[#0C1E3C] text-white p-3.5 rounded-[5px] flex items-center justify-between px-5 transition-colors group text-[13px] font-bold"
+                >
+                  <span>Profit, cash and next decisions, together.</span>
+                  <ArrowRight className="w-4 h-4 text-[#1FD6CB] transition-transform group-hover:translate-x-1" />
+                </a>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#14CBC9]/20 text-[#13215D] text-[10px] font-bold uppercase tracking-wider mb-2 border border-[#14CBC9]/30">
-                Visibility
+
+              {/* Three Tags Under Card */}
+              <div className="flex justify-center items-center gap-4 text-xs font-bold text-slate-600 mt-4">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-[2px] bg-[#0B7F8A]" />
+                  Clarity
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-[2px] bg-[#0B7F8A]" />
+                  Control
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-[2px] bg-[#0B7F8A]" />
+                  Better decisions
+                </span>
               </div>
-              <h3 className="text-lg font-bold text-[#13215D] mb-2 tracking-tight">
-                Cash Flow &amp; Runway Modeling
-              </h3>
-              <p className="text-xs text-[#13215D]/80 leading-relaxed font-medium">
-                13-week forward-looking projections so you anticipate working capital requirements and never face surprises.
-              </p>
             </div>
-
-            {/* Card 2: Executive Insights Dashboard */}
-            <div className="relative group bg-white/55 hover:bg-white/75 backdrop-blur-xl rounded-3xl p-7 border border-white/80 shadow-[0_10px_35px_rgba(19,33,93,0.06)] hover:shadow-[0_16px_45px_rgba(19,33,93,0.12)] transition-all duration-300">
-              <div className="w-12 h-12 rounded-2xl bg-white/80 border border-white/90 flex items-center justify-center text-[#13215D] mb-5 shadow-sm">
-                <BarChart3 className="w-6 h-6 text-[#13215D]" />
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#14CBC9]/20 text-[#13215D] text-[10px] font-bold uppercase tracking-wider mb-2 border border-[#14CBC9]/30">
-                Monthly reporting
-              </div>
-              <h3 className="text-lg font-bold text-[#13215D] mb-2 tracking-tight">
-                Executive Insights Dashboard
-              </h3>
-              <p className="text-xs text-[#13215D]/80 leading-relaxed font-medium">
-                Clear profit margins, customer acquisition economics, and unit profitability explained in plain business language.
-              </p>
-            </div>
-
-            {/* Card 3: Strategic CFO Advisory */}
-            <div className="relative group bg-white/55 hover:bg-white/75 backdrop-blur-xl rounded-3xl p-7 border border-white/80 shadow-[0_10px_35px_rgba(19,33,93,0.06)] hover:shadow-[0_16px_45px_rgba(19,33,93,0.12)] transition-all duration-300">
-              <div className="w-12 h-12 rounded-2xl bg-white/80 border border-white/90 flex items-center justify-center text-[#13215D] mb-5 shadow-sm">
-                <Sparkles className="w-6 h-6 text-[#13215D]" />
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-[#1acbc9]/20 text-[#13215D] text-[10px] font-bold uppercase tracking-wider mb-2 border border-[#1acbc9]/30">
-                Strategic Guidance
-              </div>
-              <h3 className="text-lg font-bold text-[#13215D] mb-2 tracking-tight">
-                Fractional CFO Partnership
-              </h3>
-              <p className="text-xs text-[#13215D]/80 leading-relaxed font-medium">
-                Senior finance leadership to guide pricing decisions, capital allocation, and sustainable growth strategies.
-              </p>
-            </div>
-
           </div>
-        </ScrollReveal>
-
+        </div>
       </div>
     </section>
   );

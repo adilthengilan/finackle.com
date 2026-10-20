@@ -1,1 +1,147 @@
 @import "tailwindcss";
+@import "./finackle-theme.css";
+
+html {
+  font-family: "Manrope", "Segoe UI", system-ui, sans-serif;
+  scroll-behavior: smooth;
+}
+
+
+.font-editorial {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-accent {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Emons-style architectural contour lines */
+.contour-bg {
+  background-image: radial-gradient(circle at 85% 20%, rgba(11, 127, 138, 0.05) 0%, transparent 50%),
+                    radial-gradient(circle at 10% 80%, rgba(20, 47, 85, 0.04) 0%, transparent 45%);
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@keyframes drawChart {
+  from {
+    stroke-dashoffset: 600;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-chart {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawChart 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes sweepUnderline {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.sweep-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.sweep-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  width: 100%;
+  height: 5px;
+  background-color: #1FD6CB;
+  transform-origin: left;
+  transform: scaleX(0);
+  border-radius: 9999px;
+  z-index: -1;
+  opacity: 0.85;
+}
+
+.sweep-underline-1::after {
+  animation: sweepUnderline 0.7s ease-out 0.4s forwards;
+}
+
+.sweep-underline-2::after {
+  animation: sweepUnderline 0.7s ease-out 0.7s forwards;
+}
+
+.sweep-underline-3::after {
+  animation: sweepUnderline 0.7s ease-out 1.0s forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-float-slow,
+  .animate-draw-chart,
+  .sweep-underline::after {
+    animation: none !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .sweep-underline::after {
+    transform: scaleX(1) !important;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  .no-print,
+  .fixed,
+  #quiz > div > div:first-child {
+    display: none !important;
+  }
+  body,
+  #root,
+  #quiz {
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  #finance-health-report {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
