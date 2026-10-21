@@ -246,6 +246,7 @@ export function App() {
   const [gateFirstName, setGateFirstName] = useState('');
   const [gateCompany, setGateCompany] = useState('');
   const [gateMsg, setGateMsg] = useState<{ type: 'ok' | 'err'; text: string } | null>(null);
+  const [gateSubmitting, setGateSubmitting] = useState(false);
   const [unlocked, setUnlocked] = useState(false);
   const [waPhone, setWaPhone] = useState('');
   const [waMsg, setWaMsg] = useState<{ type: 'ok' | 'err'; text: string } | null>(null);
@@ -409,17 +410,67 @@ export function App() {
     setAnswers((prev) => ({ ...prev, [qIndex]: optIndex }));
   };
 
-  const handleUnlockGate = (e: React.FormEvent) => {
+  const handleUnlockGate = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!gateEmail.trim() || !gateEmail.includes('@')) {
+    if (!gateEmail.trim() || !gateEmail.includes('@') || !gateEmail.includes('.')) {
       setGateMsg({ type: 'err', text: 'Please enter a valid work email so we can send your report.' });
       return;
     }
+
+    setGateSubmitting(true);
     setGateMsg(null);
-    setUnlocked(true);
-    setTimeout(() => {
-      document.getElementById('hsReport')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
+
+    const clientName = gateFirstName.trim() || gateCompany.trim() || 'Finance Leader';
+    const riskTexts = reportData.risks.map((r) => r.text);
+    const planItems = reportData.plan.flat().filter(Boolean);
+
+    try {
+      const res = await fetch('/api/send-enquiry.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          'X-Requested-With': 'fetch',
+        },
+        body: JSON.stringify({
+          name: clientName,
+          email: gateEmail.trim(),
+          company: gateCompany.trim(),
+          service: 'Finance Health Check Report',
+          lead_type: 'health_checked_client',
+          score: reportData.score,
+          band_title: reportData.band.title,
+          band_text: reportData.band.text,
+          risks: riskTexts,
+          priorities: planItems,
+          timeline: reportData.timeline,
+          message: `Health Checked Client submission. Score: ${reportData.score}/100 (${reportData.band.title}). Key risks: ${riskTexts.join('; ') || 'None identified'}.`,
+        }),
+      });
+
+      const data = await res.json().catch(() => null);
+
+      if (res.ok && data && (data.success || data.status === 'success' || data.ok)) {
+        setGateMsg({
+          type: 'ok',
+          text: 'Success! Your full Finance Health Report has been emailed to you and unlocked below.',
+        });
+      } else {
+        const errorText = data?.message || 'Notice: Could not send email copy. Your report is unlocked below.';
+        setGateMsg({ type: 'err', text: errorText });
+      }
+    } catch {
+      setGateMsg({
+        type: 'err',
+        text: 'Notice: Network issue sending email copy. Your report is unlocked below.',
+      });
+    } finally {
+      setUnlocked(true);
+      setGateSubmitting(false);
+      setTimeout(() => {
+        document.getElementById('hsReport')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    }
   };
 
   const handleWaFollowup = (e: React.FormEvent) => {
@@ -502,7 +553,6 @@ export function App() {
 
   // ---- 6. Scroll Reveal Observer & Section Spy ----
   const [activeNavDot, setActiveNavDot] = useState('top');
-  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     // Scroll reveal
@@ -546,27 +596,12 @@ export function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
-    // Fullscreen change listener
-    const handleFsChange = () => {
-      setIsFullscreen(Boolean(document.fullscreenElement));
-    };
-    document.addEventListener('fullscreenchange', handleFsChange);
-
     return () => {
       observer.disconnect();
       clearTimeout(safetyTimer);
       window.removeEventListener('scroll', handleScroll);
-      document.removeEventListener('fullscreenchange', handleFsChange);
     };
   }, []);
-
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen?.().catch(() => {});
-    } else {
-      document.exitFullscreen?.().catch(() => {});
-    }
-  };
 
   return (
     <div id="finackle-app" className="finackle-wrapper">
@@ -1281,8 +1316,9 @@ export function App() {
                         />
                       </label>
                     </div>
-                    <button type="submit" className="btn btn-mint" id="hsSubmit">
-                      Show my free report <svg width="18" height="18" aria-hidden="true"><use href="#arr" /></svg>
+                    <button type="submit" className="btn btn-mint" id="hsSubmit" disabled={gateSubmitting}>
+                      {gateSubmitting ? 'Sending report...' : 'Show my free report'}{' '}
+                      <svg width="18" height="18" aria-hidden="true"><use href="#arr" /></svg>
                     </button>
                     <p className="fine">We’ll also email you a copy. No spam, unsubscribe any time.</p>
                   </form>
@@ -1789,23 +1825,6 @@ export function App() {
         <span className="txt">WhatsApp</span>
       </a>
 
-      {/* 18. Fullscreen Toggle Button */}
-      <button
-        type="button"
-        className="fs"
-        id="fsBtn"
-        aria-label={isFullscreen ? 'Exit full screen' : 'View full screen'}
-        onClick={toggleFullscreen}
-      >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          {isFullscreen ? (
-            <path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5" />
-          ) : (
-            <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
-          )}
-        </svg>
-        <span className="txt">{isFullscreen ? 'Exit full screen' : 'Full screen'}</span>
-      </button>
 
       {/* 19. Section Spy Navigation Dots */}
       <nav className="secnav" id="secnav" aria-label="Jump to section">
