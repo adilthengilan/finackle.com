@@ -1,4 +1,5 @@
 :root{
+  color-scheme: light;
   --bg:#F4F7F8; --paper:#FFFFFF; --soft:#E9F0F3; --line:#D3DDE3; --grid:rgba(20,47,85,.06);
   --fg:#0F1F38; --muted:#3B4D66; --faint:#5D6E86;
   --ink:#142F55; --ink-2:#0C1E3C; --on-ink:#F3F8F6; --on-ink-muted:#BACADF; --ink-line:rgba(243,248,246,.15); --ink-card:rgba(255,255,255,.06);
@@ -7,18 +8,6 @@
   --font:"Manrope","Segoe UI",system-ui,sans-serif;
   --shadow:0 30px 60px -30px rgba(12,30,60,.35);
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0A1628; --paper:#0F2036; --soft:#142942; --line:#223A57; --grid:rgba(243,248,246,.05);
-  --fg:#EAF0F7; --muted:#B2C1D4; --faint:#8C9DB4;
-  --ink:#10284A; --ink-2:#06111F; --green:#36D6CC; --mint:#0F3B44; --mint-fg:#86EAE2;
-  --sage:#12323A; --sand:#2C2719; --mist:#1D2233; --blush:#33221C; --amber:#F2B66B; --amber-soft:#35281A;
-  --shadow:0 30px 60px -30px rgba(0,0,0,.75); color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0A1628; --paper:#0F2036; --soft:#142942; --line:#223A57; --grid:rgba(243,248,246,.05);
-  --fg:#EAF0F7; --muted:#B2C1D4; --faint:#8C9DB4;
-  --ink:#10284A; --ink-2:#06111F; --green:#36D6CC; --mint:#0F3B44; --mint-fg:#86EAE2;
-  --sage:#12323A; --sand:#2C2719; --mist:#1D2233; --blush:#33221C; --amber:#F2B66B; --amber-soft:#35281A;
-  --shadow:0 30px 60px -30px rgba(0,0,0,.75); color-scheme:dark}
 /* Base reset (matches the approved design preview) */
 html,body{margin:0;padding:0}
 body{-webkit-text-size-adjust:100%}
@@ -52,8 +41,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .brand .logo{width:25px;height:auto;display:block}
 .logo-tile{width:42px;height:42px;border-radius:11px;background:#FFFFFF;display:flex;align-items:center;justify-content:center;flex:none}
 .logo-tile img{width:21px;height:auto;display:block}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .nav .brand .logo{background:#FFFFFF;border-radius:8px;padding:4px 6px;width:37px}}
-:root[data-theme="dark"] .nav .brand .logo{background:#FFFFFF;border-radius:8px;padding:4px 6px;width:37px}
 .links{display:flex;gap:26px;font-size:14.5px;font-weight:600}
 .links a{text-decoration:none;color:var(--muted)}.links a:hover{color:var(--fg)}
 .navr{display:flex;gap:8px;align-items:center}
